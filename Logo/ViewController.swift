@@ -13,22 +13,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let logo = Logo(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-        logo.backgroundColor = .yellow
-
-        logo.layer.cornerRadius = 100
-        logo.layer.masksToBounds = true
-        let viewIn = UIView(frame: CGRect(x: 100, y: 100, width: 5, height: 5))
-        viewIn.backgroundColor = .red
-        logo.addSubview(viewIn)
+        logo.layer.cornerRadius = logo.bounds.height / 2
+        logo.clipsToBounds = true
+        logo.center = view.center
+        let red = CGFloat(0xFE)/255
+        let green = CGFloat(0xDA)/255
+        let blue = CGFloat(0x01)/255
         
-        let circleIn = UIView(frame: CGRect(x: 0, y: 0, width: logo.bounds.width * 2, height: logo.bounds.height * 2))
-        circleIn.center = CGPoint(x: logo.bounds.maxX, y: logo.bounds.maxY)
-        circleIn.layer.cornerRadius = logo.bounds.height * 2
-        circleIn.backgroundColor = .white
-        logo.addSubview(circleIn)
+        logo.backgroundColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
         view.addSubview(logo)
         view.backgroundColor = .red
-
     }
 
 
